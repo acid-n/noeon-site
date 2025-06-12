@@ -1,4 +1,4 @@
-name: Deploy to Timeweb Server
+name: Trigger Deploy on Server
 
 on:
   push:
@@ -8,23 +8,14 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Sync files to server
-        # Используем rsync-экшен для полной синхронизации
-        uses: easingthemes/rsync-deployments-action@v3
+      - name: SSH to server and run git pull
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          # Приватный ключ из секретов GitHub
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          # Адрес вашего сервера
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          # Пользователь на сервере
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-
-          # ИСТОЧНИК: все файлы в репозитории
-          SOURCE: "./"
-          # ЦЕЛЬ: папка сайта на сервере
-          TARGET: ${{ secrets.REMOTE_PATH }}
-          # АРГУМЕНТЫ: включая --delete для очистки от мусора
-          ARGS: "-avz --delete"
+          host: ${{ secrets.SERVER_HOST }}
+          # ВАЖНО: подключаемся как root, т.к. репозиторий принадлежит ему
+          username: "root" 
+          # ВАЖНО: используем ключ, который дает доступ к нашему серверу
+          key: ${{ secrets.SERVER_SSH_KEY_FOR_ANSIBLE }}
+          script: |
+            cd /var/www/noeon.ru/html
+            git pull
