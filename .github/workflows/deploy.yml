@@ -12,13 +12,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy files via scp
-        # ИСПОЛЬЗУЕМ НАДЕЖНЫЙ ЭКШЕН ДЛЯ КОПИРОВАНИЯ ФАЙЛОВ
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          # Что копируем (все файлы из корня репозитория)
-          source: "./"
-          # Куда копируем
+          # ИЗМЕНЕНИЕ ЗДЕСЬ: УКАЗЫВАЕМ КОНКРЕТНЫЙ ФАЙЛ
+          source: "index.html"
           target: ${{ secrets.REMOTE_PATH }}
