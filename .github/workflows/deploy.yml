@@ -11,13 +11,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy files via rsync
-        # ИСПРАВЛЕННАЯ ВЕРСИЯ С ТОЧНЫМ ТЕГОМ
-        uses: appleboy/rsync-deploy@v1.0.9
+      - name: Deploy files via scp
+        # ИСПОЛЬЗУЕМ НАДЕЖНЫЙ ЭКШЕН ДЛЯ КОПИРОВАНИЯ ФАЙЛОВ
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
+          # Что копируем (все файлы из корня репозитория)
           source: "./"
+          # Куда копируем
           target: ${{ secrets.REMOTE_PATH }}
-          flags: "-avz --delete"
