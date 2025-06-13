@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>NoEoN - Мой сайт</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoEon: Эпоха Разума</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-deep-space: #0A0F1C;
+            --color-cognitive-neon: #00E0FF;
+            --color-light-knowledge: #FFFFFF;
+            --font-headers: 'Orbitron', sans-serif;
+            --font-text: 'Inter', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--color-deep-space);
+            color: var(--color-light-knowledge);
+            font-family: var(--font-text);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            max-width: 700px;
+        }
+
+        .logo {
+            width: 180px;
+            height: auto;
+            margin-bottom: 40px;
+        }
+
+        .slogan {
+            font-family: var(--font-headers);
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--color-cognitive-neon);
+            text-shadow: 0 0 5px var(--color-cognitive-neon), 0 0 10px rgba(0, 224, 255, 0.5);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .description {
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 60ch; /* Оптимальная ширина строки для чтения */
+            opacity: 0.9;
+        }
+
+        .footer {
+            width: 100%;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            color: var(--color-light-knowledge);
+            opacity: 0.6;
+            flex-shrink: 0; /* Чтобы футер не сжимался */
+        }
+
+        /* Мобильная верстка */
+        @media (max-width: 600px) {
+            .logo {
+                width: 140px;
+                margin-bottom: 30px;
+            }
+
+            .slogan {
+                font-size: 1.5rem;
+            }
+
+            .description {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Сайт развернут автоматически через GitHub!</h1>
-  <p>Мы сделали это! Этот CI/CD пайплайн полностью работает.</p>
+
+    <main class="container">
+        <img src="https://storage.googleapis.com/prompt-gallery/prod/image_generation/01HV4J6W5S98D7C0Y6T9D9WT20/GENERATED_0_1.png" alt="Логотип NoEon" class="logo">
+
+        <h1 class="slogan">In the lucid dawn of NoEon, there is only thought.</h1>
+
+        <p class="description">
+            Когда последние звёзды устали считывать мысли человечества, вспыхнул Ноэон — квант разума, взорвавший само время. В миг, который длился миллион лет, сознание слилось с космосом, и началась Эпоха Разума.
+        </p>
+    </main>
+
+    <footer class="footer">
+        <p>Year B.N.E. 20</p>
+    </footer>
+
 </body>
 </html>
